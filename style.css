@@ -136,14 +136,13 @@ body::before {
 .nav-links a:hover { color: #fff; }
 .nav-links a:hover::after { width: 100%; }
 
-/* --- ПРОБЛЕМА 1: ФИКС ПЕРЕКЛЮЧАТЕЛЯ ЯЗЫКОВ --- */
+/* Language switcher */
 .language-switcher {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   padding: 5px;
-  background: rgba(255,255,255,0.05) !important;
-  background-image: none !important;
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 100px;
 }
@@ -155,9 +154,8 @@ body::before {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: none !important;
-  background: transparent !important;
-  background-image: none !important;
+  border: none;
+  background: transparent;
   color: rgba(255,255,255,0.4);
   font-weight: 800;
   font-size: 0.8rem;
@@ -166,13 +164,12 @@ body::before {
 }
 
 .lang-btn:hover {
-  background: rgba(255,255,255,0.07) !important;
+  background: rgba(255,255,255,0.07);
   color: #fff;
 }
 
 .lang-btn.active {
   background: var(--accent) !important;
-  background-image: none !important;
   color: #000 !important;
   box-shadow: 0 0 15px rgba(0,229,255,0.5);
 }
@@ -397,7 +394,7 @@ body::before {
   color: #fff;
 }
 
-/* --- ПРОБЛЕМА 2: КРАСИВОЕ ОБРАЗОВАНИЕ --- */
+/* ---------- Education card ---------- */
 .edu-card {
   display: flex;
   flex-direction: column;
@@ -434,6 +431,7 @@ body::before {
   font-weight: 600;
 }
 
+/* Timeline line */
 .edu-content {
   position: relative;
   padding-left: 25px;
@@ -448,18 +446,11 @@ body::before {
   position: absolute;
   left: 4px; top: 5px; bottom: 5px;
   width: 2px;
-  background: linear-gradient(to bottom, var(--accent), rgba(0,229,255,0.1));
+  background: linear-gradient(to bottom, rgba(0,229,255,0.6), rgba(0,229,255,0.1));
   border-radius: 2px;
 }
 
-.edu-item { 
-  position: relative;
-  transition: var(--transition);
-}
-
-.edu-item:hover {
-  transform: translateX(5px);
-}
+.edu-item { position: relative; }
 
 .edu-item::before {
   content: "";
@@ -471,12 +462,6 @@ body::before {
   border: 2px solid var(--accent);
   box-shadow: 0 0 10px rgba(0,229,255,0.5);
   z-index: 2;
-  transition: var(--transition);
-}
-
-.edu-item:hover::before {
-  background: var(--accent);
-  box-shadow: 0 0 15px var(--accent);
 }
 
 .edu-place {
@@ -565,7 +550,7 @@ body::before {
   border-color: var(--accent);
 }
 
-/* --- ПРОБЛЕМА 2: КРАСИВЫЕ ЯЗЫКИ --- */
+/* Language list */
 .lang-list {
   list-style: none;
 }
@@ -576,13 +561,6 @@ body::before {
   align-items: center;
   gap: 14px;
   margin-bottom: 18px;
-  padding: 5px;
-  border-radius: 8px;
-  transition: var(--transition);
-}
-
-.lang-list li:hover {
-  background: rgba(255,255,255,0.03);
 }
 
 .lang-name {
@@ -595,28 +573,13 @@ body::before {
   height: 6px;
   background: rgba(255,255,255,0.05);
   border-radius: 10px;
-  overflow: visible;
-  position: relative;
+  overflow: hidden;
 }
 
 .lang-progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--accent), var(--accent-dark));
   border-radius: 10px;
-  position: relative;
-  box-shadow: 0 0 10px rgba(0,229,255,0.3);
-}
-
-/* Эффект свечения наконечника */
-.lang-progress-fill::after {
-  content: "";
-  position: absolute;
-  right: 0; top: 50%;
-  transform: translateY(-50%);
-  width: 8px; height: 8px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #fff, 0 0 20px var(--accent);
 }
 
 .lang-lvl {
