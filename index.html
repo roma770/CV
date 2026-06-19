@@ -1,488 +1,443 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roman Chumak | IT Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
 
-    <title>Roman Chumak | IT Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  .project-screenshot {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    display: block;
+    margin: -1.5rem -1.5rem 1.2rem -1.5rem;
+    width: calc(100% + 3rem);
+  }
+
+  .project-screenshots-slider {
+    position: relative;
+    width: calc(100% + 3rem);
+    margin: -1.5rem -1.5rem 1.2rem -1.5rem;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .project-screenshots-slider img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .project-screenshots-slider img.active {
+    opacity: 1;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-muted, #a0a0b0);
+    margin-bottom: 0.8rem;
+    flex: 1;
+  }
+
+  .project-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.8rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .project-features li {
+    font-size: 0.75rem;
+    color: var(--accent, #e63946);
+    background: rgba(230, 57, 70, 0.1);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+
+  .project-icon-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-icon-wrap .project-icon {
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .project-icon-wrap h3 {
+    margin: 0;
+  }
+</style>
 </head>
-
 <body>
+
 <header id="navbar">
-    <nav class="container nav-content">
-        <a href="#" class="logo">
-            RC<span class="accent">.</span>
-        </a>
-
-        <div class="nav-right">
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang="pl">PL</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="ua">UA</button>
-                <button class="lang-btn" data-lang="ru">RU</button>
-            </div>
-
-            <ul class="nav-links">
-                <li><a href="#about" data-i18n="nav-about">O mnie</a></li>
-                <li><a href="#skills" data-i18n="nav-skills">Umiejętności</a></li>
-                <li><a href="#projects" data-i18n="nav-projects">Projekty</a></li>
-            </ul>
-
-            <a href="#contact" class="nav-btn" data-i18n="nav-contact">
-                Kontakt
-            </a>
-        </div>
-    </nav>
+  <nav class="container nav-content">
+    <a href="#" class="logo">RC<span class="accent">.</span></a>
+    <div class="nav-right">
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="pl">PL</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ua">UA</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav-about">O mnie</a></li>
+        <li><a href="#skills" data-i18n="nav-skills">Umiejętności</a></li>
+        <li><a href="#projects" data-i18n="nav-projects">Projekty</a></li>
+      </ul>
+      <a href="#contact" class="nav-btn" data-i18n="nav-contact">Kontakt</a>
+    </div>
+  </nav>
 </header>
 
 <section id="hero">
-    <div class="container hero-grid">
-
-        <div class="hero-content fade-in">
-            <div class="hero-badge" data-i18n="hero-badge">
-                Student & IT Specialist
-            </div>
-
-            <h1 data-i18n="hero-title">
-                Roman <span class="accent-text">Chumak</span>
-            </h1>
-
-            <p class="hero-description" data-i18n="hero-description">
-                Buduję nowoczesne aplikacje i rozwiązuję problemy за pomocą kodu. Łączę wiedzę akademicką z praktycznym podejściem do technologii, aby dostarczać rozwiązania, które działają.
-            </p>
-
-            <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary" data-i18n="hero-btn-projects">
-                    Zobacz moje projekty
-                </a>
-                <a href="#contact" class="btn btn-secondary" data-i18n="hero-btn-contact">
-                    Skontaktuj się
-                </a>
-            </div>
-        </div>
-
-        <div class="hero-photo-wrap fade-in delay-1">
-            <div class="hero-photo-glow"></div>
-            <div class="hero-photo-ring">
-                <img src="img/foto.jpg" alt="Roman Chumak" class="hero-photo">
-            </div>
-        </div>
-
+  <div class="container hero-grid">
+    <div class="hero-content fade-in">
+      <div class="hero-badge" data-i18n="hero-badge">Student & IT Specialist</div>
+      <h1 data-i18n="hero-title">Roman <span class="accent-text">Chumak</span></h1>
+      <p class="hero-description" data-i18n="hero-description">
+        Buduję nowoczesne aplikacje i rozwiązuję problemy za pomocą kodu. Łączę wiedzę akademicką z praktycznym podejściem do technologii, aby dostarczać rozwiązania, które działają.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary" data-i18n="hero-btn-projects">Zobacz moje projekty</a>
+        <a href="#contact" class="btn btn-secondary" data-i18n="hero-btn-contact">Skontaktuj się</a>
+      </div>
     </div>
+    <div class="hero-photo-wrap fade-in delay-1">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo-ring">
+        <img src="img/foto.jpg" alt="Roman Chumak" class="hero-photo">
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="about" class="section-padding">
-    <div class="container">
-        <h2 class="section-title fade-in" data-i18n="about-title">
-            O mnie
-        </h2>
-
-        <div class="about-grid">
-
-            <div class="glass-card text-card fade-in delay-1">
-
-                <div class="card-glow"></div>
-
-                <div class="about-header">
-                    <div class="about-line"></div>
-                    <h3 data-i18n="about-h3">Doświadczenie i Cel</h3>
-                </div>
-
-                <p class="about-p intro-text" data-i18n="about-p1">
-                    Posiadam wiedzę z zakresu nowoczesnych technologii frontend,
-                    backend oraz baz данных.
-                </p>
-
-                    <div class="skills-wrapper">
-                    <span class="skill-pill">C#</span>
-                    <span class="skill-pill">Python</span>
-                    <span class="skill-pill">Java</span>
-                    <span class="skill-pill">HTML5</span>
-                    <span class="skill-pill">CSS</span>
-                    <span class="skill-pill">SQL</span>
-                    <span class="skill-pill">PHP</span>
-                    <span class="skill-pill">PhpMyAdmin</span>
-                    <span class="skill-pill">Angular</span>
-                    <span class="skill-pill">React</span>
-                    <span class="skill-pill">PostgreSQL</span>
-                    <span class="skill-pill">JavaScript</span>
-                    <span class="skill-pill">API</span>
-                    <span class="skill-pill">Jira</span>
-                    <span class="skill-pill">Azure</span>
-                </div>
-
-                <div class="about-divider"></div>
-
-                <p class="about-p" data-i18n="about-p2">
-                    Obsługuję również system operacyjny Windows oraz aplikacje
-                    biurowe, w tym zaawansowane funkcje MS Excel.
-                </p>
-
-                <p class="about-p" data-i18n="about-p3">
-                    Jestem osobą niezależną, odpowiedzialną i szybko się uczę.
-                    Chcę aktywnie rozwijać się w branży IT oraz wnosić wartość
-                    do nowoczesnych i innowacyjnych projektów.
-                </p>
-
-            </div>
-            <div class="glass-card edu-card fade-in delay-2">
-
-                <div class="edu-header">
-                    <div class="icon-circle">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-
-                    <h3 data-i18n="edu-title">Edukacja</h3>
-                </div>
-
-                <div class="edu-content">
-
-                    <div class="edu-item">
-                        <h4 class="edu-place">Vistula University</h4>
-                        <span class="edu-status active" data-i18n="edu-current">Obecnie</span>
-                    </div>
-
-                    <div class="edu-item">
-                        <h4 class="edu-place" data-i18n="edu-school">
-                            Kijów Engineering High School
-                        </h4>
-
-                        <span class="edu-year">2012 — 2023</span>
-                    </div>
-
-                </div>
-
-            </div>
-
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="about-title">O mnie</h2>
+    <div class="about-grid">
+      <div class="glass-card text-card fade-in delay-1">
+        <div class="card-glow"></div>
+        <div class="about-header">
+          <div class="about-line"></div>
+          <h3 data-i18n="about-h3">Doświadczenie i Cel</h3>
         </div>
+        <p class="about-p intro-text" data-i18n="about-p1">
+          Posiadam wiedzę z zakresu nowoczesnych technologii frontend, backend oraz baz danych.
+        </p>
+        <div class="skills-wrapper">
+          <span class="skill-pill">C#</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">PHP</span>
+          <span class="skill-pill">PhpMyAdmin</span>
+          <span class="skill-pill">Angular</span>
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">API</span>
+          <span class="skill-pill">Jira</span>
+          <span class="skill-pill">Azure</span>
+        </div>
+        <div class="about-divider"></div>
+        <p class="about-p" data-i18n="about-p2">
+          Obsługuję również system operacyjny Windows oraz aplikacje biurowe, w tym zaawansowane funkcje MS Excel.
+        </p>
+        <p class="about-p" data-i18n="about-p3">
+          Jestem osobą niezależną, odpowiedzialną i szybko się uczę. Chcę aktywnie rozwijać się w branży IT oraz wnosić wartość do nowoczesnych i innowacyjnych projektów.
+        </p>
+      </div>
+      <div class="glass-card edu-card fade-in delay-2">
+        <div class="edu-header">
+          <div class="icon-circle"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h3 data-i18n="edu-title">Edukacja</h3>
+        </div>
+        <div class="edu-content">
+          <div class="edu-item">
+            <h4 class="edu-place">Vistula University</h4>
+            <span class="edu-status active" data-i18n="edu-current">Obecnie</span>
+          </div>
+          <div class="edu-item">
+            <h4 class="edu-place" data-i18n="edu-school">Kijów Engineering High School</h4>
+            <span class="edu-year">2012 — 2023</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section id="skills" class="section-padding">
-    <div class="container">
-        <h2 class="section-title fade-in" data-i18n="skills-title">
-            Umiejętności
-        </h2>
-
-        <div class="skills-grid">
-            <div class="glass-card skill-card fade-in">
-                <div class="skill-card-header">
-                    <div class="skill-icon-box">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <h3 data-i18n="skills-tech">Technologie</h3>
-                </div>
-                
-                <div class="tags-container">
-                    <span class="tag">HTML5</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">PHP</span>
-                    <span class="tag">C#</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">Java</span>
-                    <span class="tag">React</span>
-                    <span class="tag">Angular</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">PostgreSQL</span>
-                    <span class="tag">API</span>
-                    <span class="tag">PhpMyAdmin</span>
-                </div>
-            </div>
-
-            <div class="glass-card skill-card fade-in">
-                <div class="skill-card-header">
-                    <div class="skill-icon-box">
-                        <i class="fa-solid fa-gears"></i>
-                    </div>
-                    <h3 data-i18n="skills-tools">Narzędzia & Cechy</h3>
-                </div>
-
-                <div class="tags-container">
-                    <span class="tag">Jira</span>
-                    <span class="tag">Azure</span>
-                    <span class="tag">Windows</span>
-                    <span class="tag">MS Office</span>
-                    <span class="tag" data-i18n="soft-1">Kreatywność</span>
-                    <span class="tag" data-i18n="soft-2">Praca w zespole</span>
-                    <span class="tag" data-i18n="soft-3">Odpowiedzialność</span>
-                </div>
-            </div>
-
-            <div class="glass-card skill-card fade-in">
-                <div class="skill-card-header">
-                    <div class="skill-icon-box">
-                        <i class="fa-solid fa-language"></i>
-                    </div>
-                    <h3 data-i18n="skills-lang">Języki</h3>
-                </div>
-
-                <ul class="lang-list">
-                    <li>
-                        <span class="lang-name" data-i18n="lang-pl">Polski</span>
-                        <div class="lang-progress-bg"><div class="lang-progress-fill" style="width: 85%;"></div></div>
-                        <span class="lang-lvl">B2</span>
-                    </li>
-                    <li>
-                        <span class="lang-name" data-i18n="lang-ua">Ukraiński</span>
-                        <div class="lang-progress-bg"><div class="lang-progress-fill" style="width: 100%;"></div></div>
-                        <span class="lang-lvl">C2</span>
-                    </li>
-                    <li>
-                        <span class="lang-name" data-i18n="lang-ru">Rosyjski</span>
-                        <div class="lang-progress-bg"><div class="lang-progress-fill" style="width: 100%;"></div></div>
-                        <span class="lang-lvl">C2</span>
-                    </li>
-                    <li>
-                        <span class="lang-name" data-i18n="lang-en">Angielski</span>
-                        <div class="lang-progress-bg"><div class="lang-progress-fill" style="width: 40%;"></div></div>
-                        <span class="lang-lvl">A2</span>
-                    </li>
-                </ul>
-            </div>
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="skills-title">Umiejętności</h2>
+    <div class="skills-grid">
+      <div class="glass-card skill-card fade-in">
+        <div class="skill-card-header">
+          <div class="skill-icon-box"><i class="fa-solid fa-code"></i></div>
+          <h3 data-i18n="skills-tech">Technologie</h3>
         </div>
+        <div class="tags-container">
+          <span class="tag">HTML5</span><span class="tag">CSS</span>
+          <span class="tag">JavaScript</span><span class="tag">PHP</span>
+          <span class="tag">C#</span><span class="tag">Python</span>
+          <span class="tag">Java</span><span class="tag">React</span>
+          <span class="tag">Angular</span><span class="tag">SQL</span>
+          <span class="tag">PostgreSQL</span><span class="tag">API</span>
+          <span class="tag">PhpMyAdmin</span>
+        </div>
+      </div>
+      <div class="glass-card skill-card fade-in">
+        <div class="skill-card-header">
+          <div class="skill-icon-box"><i class="fa-solid fa-gears"></i></div>
+          <h3 data-i18n="skills-tools">Narzędzia &amp; Cechy</h3>
+        </div>
+        <div class="tags-container">
+          <span class="tag">Jira</span><span class="tag">Azure</span>
+          <span class="tag">Windows</span><span class="tag">MS Office</span>
+          <span class="tag" data-i18n="soft-1">Kreatywność</span>
+          <span class="tag" data-i18n="soft-2">Praca w zespole</span>
+          <span class="tag" data-i18n="soft-3">Odpowiedzialność</span>
+        </div>
+      </div>
+      <div class="glass-card skill-card fade-in">
+        <div class="skill-card-header">
+          <div class="skill-icon-box"><i class="fa-solid fa-language"></i></div>
+          <h3 data-i18n="skills-lang">Języki</h3>
+        </div>
+        <ul class="lang-list">
+          <li>
+            <span class="lang-name" data-i18n="lang-pl">Polski</span>
+            <div class="lang-progress-bg"><div class="lang-progress-fill" style="width:85%"></div></div>
+            <span class="lang-lvl">B2</span>
+          </li>
+          <li>
+            <span class="lang-name" data-i18n="lang-ua">Ukraiński</span>
+            <div class="lang-progress-bg"><div class="lang-progress-fill" style="width:100%"></div></div>
+            <span class="lang-lvl">C2</span>
+          </li>
+          <li>
+            <span class="lang-name" data-i18n="lang-ru">Rosyjski</span>
+            <div class="lang-progress-bg"><div class="lang-progress-fill" style="width:100%"></div></div>
+            <span class="lang-lvl">C2</span>
+          </li>
+          <li>
+            <span class="lang-name" data-i18n="lang-en">Angielski</span>
+            <div class="lang-progress-bg"><div class="lang-progress-fill" style="width:40%"></div></div>
+            <span class="lang-lvl">A2</span>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </section>
 
-
+<!-- ═══════════════════════════════ PROJECTS ═══════════════════════════════ -->
 <section id="projects" class="section-padding">
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="projects-title">Moje Projekty</h2>
+    <div class="projects-grid">
 
-    <div class="container">
-
-        <h2 class="section-title fade-in"
-            data-i18n="projects-title">
-            Moje Projekty
-        </h2>
-
-        <div class="projects-grid">
-
-            <div class="glass-card project-card fade-in">
-
-                <div class="project-icon">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-
-                <h3>Shop Electro</h3>
-
-                <p data-i18n="proj-1-desc">
-                    Nowoczesna aplikacja webowa e-commerce.
-                </p>
-
-                <div class="project-bottom">
-
-                    <div class="project-techs">
-                        HTML • CSS • JS • PHP • SQL
-                    </div>
-
-                    <div class="project-links">
-
-                        <a href="https://shop-electro-h2yf.onrender.com"
-                           target="_blank">
-
-                             <i class="fa-solid fa-link"></i>
-
-                        </a>
-
-                        <a href="https://github.com/roma770/shop_electro"
-                           target="_blank">
-
-                             <i class="fa-brands fa-github"></i>
-
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="glass-card project-card fade-in">
-
-                <div class="project-icon">
-                    <i class="fa-solid fa-list-check"></i>
-                </div>
-
-                <h3>Mini Task Manager</h3>
-
-                <p data-i18n="proj-2-desc">
-                    Aplikacja do zarządzania zadaniami.
-                </p>
-
-                <div class="project-bottom">
-
-                    <div class="project-techs">
-                        JavaScript • HTML • CSS
-                    </div>
-
-                    <div class="project-links">
-
-                        <a href="https://mini-task-manager-z138.onrender.com"
-                           target="_blank">
-
-                             <i class="fa-solid fa-link"></i>
-
-                        </a>
-
-                        <a href="https://github.com/roma770/mini-task-manager"
-                           target="_blank">
-
-                             <i class="fa-brands fa-github"></i>
-
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="glass-card project-card fade-in">
-
-                <div class="project-icon">
-                    <i class="fa-solid fa-film"></i>
-                </div>
-
-                <h3>My Cinema Site</h3>
-
-                <p data-i18n="proj-3-desc">
-                    Strona internetowa dla kina.
-                </p>
-
-                <div class="project-bottom">
-
-                    <div class="project-techs">
-                        React • JavaScript
-                    </div>
-
-                    <div class="project-links">
-
-                        <a href="https://roma770.github.io/My-cinema-site/"
-                           target="_blank">
-
-                             <i class="fa-solid fa-link"></i>
-
-                        </a>
-
-                        <a href="https://github.com/roma770/My-cinema-site"
-                           target="_blank">
-
-                             <i class="fa-brands fa-github"></i>
-
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card project-card fade-in">
-
-                <div class="project-icon">
-                    <i class="fa-solid fa-cloud-sun"></i>
-                </div>
-
-                <h3>Weather App (API)</h3>
-
-                <p data-i18n="proj-4-desc">
-                    Aplikacja pogodowa z API.
-                </p>
-
-                <div class="project-bottom">
-
-                    <div class="project-techs">
-                        JS • REST API • JSON
-                    </div>
-
-                    <div class="project-links">
-
-                        <a href="https://roma770.github.io/my-api-project/"
-                           target="_blank">
-
-                             <i class="fa-solid fa-link"></i>
-
-                        </a>
-
-                        <a href="https://github.com/roma770/my-api-project"
-                           target="_blank">
-
-                             <i class="fa-brands fa-github"></i>
-
-                        </a>
-                    </div>
-                </div>
-            </div>
+      <!-- ── 1. Shop Electro ── -->
+      <div class="glass-card project-card fade-in">
+        <!-- Auto-sliding screenshots (7-10) -->
+        <div class="project-screenshots-slider" id="slider-shop">
+          <img src="img/shop1.png" class="active" alt="Shop Electro – lista produktów">
+          <img src="img/shop2.png" alt="Shop Electro – czat administratora">
+          <img src="img/shop3.png" alt="Shop Electro – panel admina">
+          <img src="img/shop4.png" alt="Shop Electro – dodawanie produktów">
         </div>
+
+        <div class="project-icon-wrap">
+          <div class="project-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+          <h3>Shop Electro</h3>
+        </div>
+
+        <p class="project-desc" data-i18n="proj-1-desc">
+          Pełnoprawna aplikacja e-commerce do sprzedaży elektroniki. Posiada system rejestracji i logowania użytkowników, panel administratora do zarządzania produktami (dodawanie, edycja, usuwanie), koszyk zakupowy oraz wbudowany czat w czasie rzeczywistym między klientem a administratorem. Baza danych przechowuje produkty, użytkowników i historię zamówień.
+        </p>
+        <ul class="project-features">
+          <li>Logowanie / Rejestracja</li>
+          <li>Panel Admina</li>
+          <li>Koszyk</li>
+          <li>Czat live</li>
+          <li>CRUD produktów</li>
+        </ul>
+        <div class="project-bottom">
+          <div class="project-techs">HTML • CSS • JS • PHP • SQL</div>
+          <div class="project-links">
+            <a href="https://shop-electro-h2yf.onrender.com" target="_blank"><i class="fa-solid fa-link"></i></a>
+            <a href="https://github.com/roma770/shop_electro" target="_blank"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 2. Mini Task Manager ── -->
+      <div class="glass-card project-card fade-in">
+        <div class="project-icon-wrap" style="margin-top:0.5rem">
+          <div class="project-icon"><i class="fa-solid fa-list-check"></i></div>
+          <h3>Mini Task Manager</h3>
+        </div>
+
+        <p class="project-desc" data-i18n="proj-2-desc">
+          Prosta i przejrzysta aplikacja do zarządzania codziennymi zadaniami. Pozwala tworzyć, oznaczać jako ukończone i usuwać zadania — wszystko bez przeładowania strony. Dane są przechowywane w localStorage, dzięki czemu zadania nie znikają po zamknięciu przeglądarki. Interfejs jest responsywny i działa na urządzeniach mobilnych.
+        </p>
+        <ul class="project-features">
+          <li>Dodawanie zadań</li>
+          <li>Oznaczanie jako done</li>
+          <li>localStorage</li>
+          <li>Responsywny UI</li>
+        </ul>
+        <div class="project-bottom">
+          <div class="project-techs">JavaScript • HTML • CSS</div>
+          <div class="project-links">
+            <a href="https://mini-task-manager-z138.onrender.com" target="_blank"><i class="fa-solid fa-link"></i></a>
+            <a href="https://github.com/roma770/mini-task-manager" target="_blank"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 3. My Cinema Site ── -->
+      <div class="glass-card project-card fade-in">
+        <!-- Auto-sliding screenshots (1-4) -->
+        <div class="project-screenshots-slider" id="slider-cinema">
+          <img src="img/cinema1.png" class="active" alt="CineFlex – strona główna">
+          <img src="img/cinema2.png" alt="CineFlex – wybór miejsc">
+          <img src="img/cinema3.png" alt="CineFlex – buffet">
+          <img src="img/cinema4.png" alt="CineFlex – cennik biletów">
+        </div>
+
+        <div class="project-icon-wrap">
+          <div class="project-icon"><i class="fa-solid fa-film"></i></div>
+          <h3>My Cinema Site</h3>
+        </div>
+
+        <p class="project-desc" data-i18n="proj-3-desc">
+          Interaktywna strona internetowa dla kina „CineFlex". Użytkownik może przeglądać repertuar, wybierać miejsca na sali kinowej w trybie wizualnym (mapa siedzeń), zamawiać przekąski z menu bufetowego oraz sprawdzać cennik biletów. Projekt zbudowany w React z dbałością o wygląd i animacje — klimatyczny dark-mode z czerwonymi akcentami.
+        </p>
+        <ul class="project-features">
+          <li>Mapa siedzeń</li>
+          <li>Repertuar filmów</li>
+          <li>Menu bufetu</li>
+          <li>Cennik biletów</li>
+          <li>Dark mode UI</li>
+        </ul>
+        <div class="project-bottom">
+          <div class="project-techs">React • JavaScript • CSS</div>
+          <div class="project-links">
+            <a href="https://roma770.github.io/My-cinema-site/" target="_blank"><i class="fa-solid fa-link"></i></a>
+            <a href="https://github.com/roma770/My-cinema-site" target="_blank"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 4. Weather App ── -->
+      <div class="glass-card project-card fade-in">
+        <!-- Auto-sliding screenshots (5-6) -->
+        <div class="project-screenshots-slider" id="slider-weather">
+          <img src="img/weather1.png" class="active" alt="Weather App – Kyiv">
+          <img src="img/weather2.png" alt="Weather App – London °F">
+        </div>
+
+        <div class="project-icon-wrap">
+          <div class="project-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+          <h3>Weather App (API)</h3>
+        </div>
+
+        <p class="project-desc" data-i18n="proj-4-desc">
+          Aplikacja pogodowa pobierająca dane w czasie rzeczywistym z OpenWeatherMap API. Wyświetla aktualną temperaturę, odczuwalną, stan powietrza (AQI), godzinowy prognozę na 24h oraz zachód / wschód słońca dla dowolnego miasta świata. Obsługuje przełączanie jednostek °C / °F i dostępna jest prognoza na 5 dni. Całość utrzymana w eleganckim dark-mode.
+        </p>
+        <ul class="project-features">
+          <li>REST API (OpenWeather)</li>
+          <li>Prognoza godzinowa</li>
+          <li>5-dniowa prognoza</li>
+          <li>AQI powietrza</li>
+          <li>°C / °F</li>
+          <li>Wyszukiwanie miast</li>
+        </ul>
+        <div class="project-bottom">
+          <div class="project-techs">JS • REST API • JSON</div>
+          <div class="project-links">
+            <a href="https://roma770.github.io/my-api-project/" target="_blank"><i class="fa-solid fa-link"></i></a>
+            <a href="https://github.com/roma770/my-api-project" target="_blank"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
 <footer id="contact" class="footer">
-    <div class="container fade-in">
-        <h2 class="footer-title"
-            data-i18n="footer-title">
-            Skontaktuj się ze mną
-        </h2>
-
-        <p class="footer-subtitle"
-            data-i18n="footer-subtitle">
-            Jestem otwarty na nowe możliwości współpracy.
-        </p>
-
-        <div class="contact-methods">
-            <a href="tel:+48881470920"
-               class="contact-item">
-                <i class="fa-solid fa-phone"></i>
-                <span>
-                    +48 881 470 920
-                 </span>
-            </a>
-
-            <a href="mailto:romachymakk7@gmail.com"
-               class="contact-item">
-
-                <i class="fa-solid fa-envelope"></i>
-
-                <span>
-                    romachymakk7@gmail.com
-                </span>
-
-            </a>
-
-            <div class="contact-item">
-
-                <i class="fa-solid fa-location-dot"></i>
-
-                <span data-i18n="location">
-                    Warszawa, Polska
-                </span>
-
-            </div>
-
-            <a href="https://www.linkedin.com/in/roman-chumak-4a1b893a0/"
-               target="_blank"
-               class="contact-item">
-
-                <i class="fa-brands fa-linkedin"></i>
-
-                <span>
-                    LinkedIn
-                </span>
-            </a>
-        </div>
-
-        <div class="copyright">
-
-            © 2026 Roman Chumak.
-            <span data-i18n="rights">
-                Wszelkie prawa zastrzeżone.
-            </span>
-
-        </div>
-
+  <div class="container fade-in">
+    <h2 class="footer-title" data-i18n="footer-title">Skontaktuj się ze mną</h2>
+    <p class="footer-subtitle" data-i18n="footer-subtitle">Jestem otwarty na nowe możliwości współpracy.</p>
+    <div class="contact-methods">
+      <a href="tel:+48881470920" class="contact-item">
+        <i class="fa-solid fa-phone"></i><span>+48 881 470 920</span>
+      </a>
+      <a href="mailto:romachymakk7@gmail.com" class="contact-item">
+        <i class="fa-solid fa-envelope"></i><span>romachymakk7@gmail.com</span>
+      </a>
+      <div class="contact-item">
+        <i class="fa-solid fa-location-dot"></i><span data-i18n="location">Warszawa, Polska</span>
+      </div>
+      <a href="https://www.linkedin.com/in/roman-chumak-4a1b893a0/" target="_blank" class="contact-item">
+        <i class="fa-brands fa-linkedin"></i><span>LinkedIn</span>
+      </a>
     </div>
-
+    <div class="copyright">
+      © 2026 Roman Chumak. <span data-i18n="rights">Wszelkie prawa zastrzeżone.</span>
+    </div>
+  </div>
 </footer>
 
 <script src="script.js"></script>
+<script>
+  // ── Auto-slide screenshots ──
+  function initSlider(sliderId, intervalMs) {
+    const slider = document.getElementById(sliderId);
+    if (!slider) return;
+    const imgs = slider.querySelectorAll('img');
+    if (imgs.length < 2) return;
+    let current = 0;
+    setInterval(() => {
+      imgs[current].classList.remove('active');
+      current = (current + 1) % imgs.length;
+      imgs[current].classList.add('active');
+    }, intervalMs);
+  }
 
+  document.addEventListener('DOMContentLoaded', () => {
+    initSlider('slider-cinema',  2800);
+    initSlider('slider-weather', 3500);
+    initSlider('slider-shop',    2500);
+  });
+</script>
 </body>
 </html>
