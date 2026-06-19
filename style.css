@@ -238,6 +238,13 @@ body::before {
   padding-top: 120px;
 }
 
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 40px;
+}
+
 .hero-content { max-width: 760px; }
 
 .hero-badge {
@@ -272,6 +279,73 @@ body::before {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+/* Hero photo */
+.hero-photo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-photo-glow {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 90%;
+  aspect-ratio: 1 / 1;
+  max-width: 420px;
+  background: radial-gradient(circle, rgba(0,229,255,0.35), transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
+  animation: heroGlowPulse 5s ease-in-out infinite;
+}
+
+@keyframes heroGlowPulse {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.06); }
+}
+
+.hero-photo-ring {
+  position: relative;
+  z-index: 1;
+  width: min(80%, 400px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  padding: 6px;
+  background: conic-gradient(from 180deg, var(--accent), transparent 35%, transparent 65%, var(--accent));
+  box-shadow: 0 25px 60px rgba(0,0,0,0.55);
+  animation: heroRingSpin 12s linear infinite;
+}
+
+@keyframes heroRingSpin {
+  to { transform: rotate(360deg); }
+}
+
+.hero-photo-ring::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: var(--bg);
+  z-index: 0;
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--bg);
+  animation: heroRingSpinReverse 12s linear infinite;
+}
+
+@keyframes heroRingSpinReverse {
+  to { transform: rotate(-360deg); }
 }
 
 /* ---------- Section title ---------- */
@@ -732,6 +806,9 @@ body::before {
   transform: translateY(0);
 }
 
+.fade-in.delay-1.visible { transition-delay: 0.15s; }
+.fade-in.delay-2.visible { transition-delay: 0.3s; }
+
 /* ---------- MOBILE ---------- */
 
 @media (max-width: 992px) {
@@ -742,6 +819,19 @@ body::before {
   .nav-right { gap: 15px; }
 
   .section-title { font-size: 2.8rem; }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-content { max-width: 100%; }
+
+  .hero-actions { justify-content: center; }
+
+  .hero-photo-wrap { order: -1; margin-bottom: 10px; }
+
+  .hero-photo-ring { width: min(60%, 280px); }
 }
 
 @media (max-width: 768px) {
@@ -795,6 +885,8 @@ body::before {
     padding: 16px 20px;
   }
 
+  .hero-photo-ring { width: min(55%, 220px); }
+
   /* Sections */
   .section-padding { padding: 80px 0; }
   .section-title {
@@ -845,6 +937,8 @@ body::before {
   .container { padding: 0 16px; }
 
   #hero h1 { font-size: clamp(2.3rem, 9vw, 3rem); }
+
+  .hero-photo-ring { width: min(65%, 200px); }
 
   .glass-card {
     padding: 22px 16px;
