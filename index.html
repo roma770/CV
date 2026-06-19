@@ -24,69 +24,52 @@
   overflow: hidden;
 }
 
-/* fixed height frame for the images */
+/* viewport grows to fit full image height — no cropping */
 .ps-viewport {
   position: relative;
   width: 100%;
-  height: 220px;         /* fixed px so images are never squished */
-  overflow: hidden;
+  background: #080d1c;
 }
 
-/* slides stack on top of each other via opacity fade */
+/* all slides: invisible, removed from flow */
 .ps-slide {
-  position: absolute;
-  inset: 0;
+  display: none;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.6s ease;
+  height: auto;
+  object-fit: contain;
+  vertical-align: top;
   user-select: none;
   -webkit-user-drag: none;
+  animation: psIn 0.55s ease;
 }
+/* active slide: block so it takes natural height */
 .ps-slide.active {
-  opacity: 1;
-  z-index: 1;
+  display: block;
 }
-
-/* dark gradient at bottom so dots/arrows stay readable */
-.ps-gradient {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(to top, rgba(8,13,28,0.85) 0%, transparent 100%);
-  z-index: 2;
-  pointer-events: none;
+@keyframes psIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* ---- prev / next arrows ---- */
 .ps-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: rgba(8,12,28,0.7);
   border: 1px solid rgba(255,255,255,0.2);
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.2s, background 0.2s;
-  z-index: 5;
+  flex-shrink: 0;
+  transition: background 0.2s;
   backdrop-filter: blur(8px);
   padding: 0;
 }
-.ps-arrow.ps-prev { left: 10px; }
-.ps-arrow.ps-next { right: 10px; }
-.ps-arrow:hover   { background: rgba(99,102,241,0.8); }
-.ps-viewport:hover .ps-arrow { opacity: 1; }
+.ps-arrow:hover { background: rgba(99,102,241,0.8); }
 
 /* ---- category badge ---- */
 .ps-badge {
@@ -108,75 +91,77 @@
 
 /* ---- counter ---- */
 .ps-counter {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(8,12,28,0.65);
-  backdrop-filter: blur(5px);
-  color: rgba(255,255,255,0.85);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.06em;
-  padding: 3px 9px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.12);
-  z-index: 5;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+  line-height: 1;
 }
 
 /* ---- progress bar ---- */
 .ps-progress {
   position: absolute;
   bottom: 0; left: 0;
-  height: 2px;
+  height: 3px;
   width: 0%;
   background: #6366f1;
   z-index: 6;
   transition: width 0.06s linear;
+  border-radius: 0 2px 2px 0;
 }
 
 /* ---- thumbnail strip (OUTSIDE viewport, below image) ---- */
-.ps-thumbs {
+.ps-controls {
   display: flex;
+  align-items: center;
   gap: 8px;
-  padding: 10px 14px 12px;
+  padding: 8px 12px 10px;
   background: rgba(8,12,28,0.6);
   border-top: 1px solid rgba(255,255,255,0.06);
+}
+/* prev/next inside control bar */
+.ps-controls .ps-arrow {
+  position: static;
+  transform: none;
+  opacity: 1;
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.ps-controls .ps-arrow:hover { background: rgba(99,102,241,0.8); }
+/* thumbs scroll row */
+.ps-thumbs {
+  display: flex;
+  gap: 6px;
+  flex: 1;
   overflow-x: auto;
   scrollbar-width: none;
 }
 .ps-thumbs::-webkit-scrollbar { display: none; }
-
 .ps-thumb {
-  width: 72px;
-  height: 46px;
+  width: 68px;
+  height: 44px;
   object-fit: cover;
   object-position: top center;
-  border-radius: 6px;
+  border-radius: 5px;
   border: 2px solid rgba(255,255,255,0.1);
   opacity: 0.45;
   cursor: pointer;
   flex-shrink: 0;
   transition: opacity 0.2s, border-color 0.2s, transform 0.15s;
 }
-.ps-thumb:hover {
-  opacity: 0.8;
-  transform: translateY(-2px);
-}
-.ps-thumb.active {
-  opacity: 1;
-  border-color: #6366f1;
-  transform: translateY(-2px);
-}
+.ps-thumb:hover { opacity: 0.8; transform: translateY(-2px); }
+.ps-thumb.active { opacity: 1; border-color: #6366f1; transform: translateY(-2px); }
 
 /* ---- dot row (inside viewport, bottom center) ---- */
 .ps-dots {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 5px;
-  z-index: 5;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 0 0;
 }
 .ps-dot {
   height: 5px;
@@ -487,17 +472,18 @@
           <div class="ps-viewport" id="ps-shop-vp">
             <img class="ps-slide active" src="img/shop1.png" alt="Shop Electro – produkty">
             <img class="ps-slide"        src="img/shop4.png" alt="Shop Electro – admin">
-            <div class="ps-gradient"></div>
             <span class="ps-badge badge-shop">E-commerce</span>
-            <button class="ps-arrow ps-prev" data-id="shop" aria-label="Poprzedni">&#8592;</button>
-            <button class="ps-arrow ps-next" data-id="shop" aria-label="Następny">&#8594;</button>
-            <div class="ps-dots"    id="ps-shop-dots"></div>
-            <div class="ps-counter" id="ps-shop-cnt">1 / 2</div>
             <div class="ps-progress" id="ps-shop-prog"></div>
           </div>
-          <div class="ps-thumbs" id="ps-shop-thumbs">
-            <img class="ps-thumb active" src="img/shop1.png" data-id="shop" data-idx="0" alt="">
-            <img class="ps-thumb"        src="img/shop4.png" data-id="shop" data-idx="1" alt="">
+          <div class="ps-controls">
+            <button class="ps-arrow ps-prev" data-id="shop" aria-label="Poprzedni">&#8592;</button>
+            <div class="ps-thumbs" id="ps-shop-thumbs">
+              <img class="ps-thumb active" src="img/shop1.png" data-id="shop" data-idx="0" alt="">
+              <img class="ps-thumb"        src="img/shop4.png" data-id="shop" data-idx="1" alt="">
+            </div>
+            <button class="ps-arrow ps-next" data-id="shop" aria-label="Następny">&#8594;</button>
+            <div class="ps-dots" id="ps-shop-dots"></div>
+            <div class="ps-counter" id="ps-shop-cnt">1 / 2</div>
           </div>
         </div>
 
@@ -528,19 +514,20 @@
             <img class="ps-slide"        src="img/cinema2.png" alt="CineFlex – buffet">
             <img class="ps-slide"        src="img/cinema3.png" alt="CineFlex – miejsca">
             <img class="ps-slide"        src="img/cinema4.png" alt="CineFlex – cennik">
-            <div class="ps-gradient"></div>
             <span class="ps-badge badge-cinema">Cinema</span>
-            <button class="ps-arrow ps-prev" data-id="cinema" aria-label="Poprzedni">&#8592;</button>
-            <button class="ps-arrow ps-next" data-id="cinema" aria-label="Następny">&#8594;</button>
-            <div class="ps-dots"    id="ps-cinema-dots"></div>
-            <div class="ps-counter" id="ps-cinema-cnt">1 / 4</div>
             <div class="ps-progress" id="ps-cinema-prog"></div>
           </div>
-          <div class="ps-thumbs" id="ps-cinema-thumbs">
-            <img class="ps-thumb active" src="img/cinema1.png" data-id="cinema" data-idx="0" alt="">
-            <img class="ps-thumb"        src="img/cinema2.png" data-id="cinema" data-idx="1" alt="">
-            <img class="ps-thumb"        src="img/cinema3.png" data-id="cinema" data-idx="2" alt="">
-            <img class="ps-thumb"        src="img/cinema4.png" data-id="cinema" data-idx="3" alt="">
+          <div class="ps-controls">
+            <button class="ps-arrow ps-prev" data-id="cinema" aria-label="Poprzedni">&#8592;</button>
+            <div class="ps-thumbs" id="ps-cinema-thumbs">
+              <img class="ps-thumb active" src="img/cinema1.png" data-id="cinema" data-idx="0" alt="">
+              <img class="ps-thumb"        src="img/cinema2.png" data-id="cinema" data-idx="1" alt="">
+              <img class="ps-thumb"        src="img/cinema3.png" data-id="cinema" data-idx="2" alt="">
+              <img class="ps-thumb"        src="img/cinema4.png" data-id="cinema" data-idx="3" alt="">
+            </div>
+            <button class="ps-arrow ps-next" data-id="cinema" aria-label="Następny">&#8594;</button>
+            <div class="ps-dots" id="ps-cinema-dots"></div>
+            <div class="ps-counter" id="ps-cinema-cnt">1 / 4</div>
           </div>
         </div>
 
@@ -569,17 +556,18 @@
           <div class="ps-viewport" id="ps-weather-vp">
             <img class="ps-slide active" src="img/weather1.png" alt="Weather App – Kyiv °C">
             <img class="ps-slide"        src="img/weather2.png" alt="Weather App – London °F">
-            <div class="ps-gradient"></div>
             <span class="ps-badge badge-weather">Weather API</span>
-            <button class="ps-arrow ps-prev" data-id="weather" aria-label="Poprzedni">&#8592;</button>
-            <button class="ps-arrow ps-next" data-id="weather" aria-label="Następny">&#8594;</button>
-            <div class="ps-dots"    id="ps-weather-dots"></div>
-            <div class="ps-counter" id="ps-weather-cnt">1 / 2</div>
             <div class="ps-progress" id="ps-weather-prog"></div>
           </div>
-          <div class="ps-thumbs" id="ps-weather-thumbs">
-            <img class="ps-thumb active" src="img/weather1.png" data-id="weather" data-idx="0" alt="">
-            <img class="ps-thumb"        src="img/weather2.png" data-id="weather" data-idx="1" alt="">
+          <div class="ps-controls">
+            <button class="ps-arrow ps-prev" data-id="weather" aria-label="Poprzedni">&#8592;</button>
+            <div class="ps-thumbs" id="ps-weather-thumbs">
+              <img class="ps-thumb active" src="img/weather1.png" data-id="weather" data-idx="0" alt="">
+              <img class="ps-thumb"        src="img/weather2.png" data-id="weather" data-idx="1" alt="">
+            </div>
+            <button class="ps-arrow ps-next" data-id="weather" aria-label="Następny">&#8594;</button>
+            <div class="ps-dots" id="ps-weather-dots"></div>
+            <div class="ps-counter" id="ps-weather-cnt">1 / 2</div>
           </div>
         </div>
 
@@ -693,15 +681,22 @@
     }
   }
 
-  /* ---- render: fade transition ---- */
+  /* ---- render: show/hide with animation ---- */
   function render(id) {
     const s = state[id];
 
-    /* slides — toggle .active class for opacity fade */
+    /* slides — swap active class (CSS handles display+animation) */
     const vp = document.getElementById('ps-' + id + '-vp');
     if (vp) {
       Array.from(vp.querySelectorAll('.ps-slide')).forEach((sl, i) => {
+        const wasActive = sl.classList.contains('active');
         sl.classList.toggle('active', i === s.idx);
+        /* restart animation on newly shown slide */
+        if (!wasActive && i === s.idx) {
+          sl.style.animation = 'none';
+          sl.offsetHeight; /* reflow */
+          sl.style.animation = '';
+        }
       });
     }
 
