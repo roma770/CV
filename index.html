@@ -15,8 +15,6 @@
    PROJECT SLIDER
    ============================================================ */
 
-/* outer shell — border-radius only on top, no overflow:hidden here
-   so thumbs below sit cleanly outside */
 .project-slider {
   position: relative;
   background: #080d1c;
@@ -24,14 +22,12 @@
   overflow: hidden;
 }
 
-/* viewport grows to fit full image height — no cropping */
 .ps-viewport {
   position: relative;
   width: 100%;
   background: #080d1c;
 }
 
-/* all slides: invisible, removed from flow */
 .ps-slide {
   display: none;
   width: 100%;
@@ -42,7 +38,6 @@
   -webkit-user-drag: none;
   animation: psIn 0.55s ease;
 }
-/* active slide: block so it takes natural height */
 .ps-slide.active {
   display: block;
 }
@@ -51,7 +46,6 @@
   to   { opacity: 1; }
 }
 
-/* ---- prev / next arrows ---- */
 .ps-arrow {
   width: 28px;
   height: 28px;
@@ -71,7 +65,6 @@
 }
 .ps-arrow:hover { background: rgba(99,102,241,0.8); }
 
-/* ---- category badge ---- */
 .ps-badge {
   position: absolute;
   top: 10px;
@@ -89,7 +82,6 @@
 .ps-badge.badge-cinema  { background: #dc2626; }
 .ps-badge.badge-weather { background: #2563eb; }
 
-/* ---- counter ---- */
 .ps-counter {
   font-size: 11px;
   font-weight: 500;
@@ -99,19 +91,6 @@
   line-height: 1;
 }
 
-/* ---- progress bar ---- */
-.ps-progress {
-  position: absolute;
-  bottom: 0; left: 0;
-  height: 3px;
-  width: 0%;
-  background: #6366f1;
-  z-index: 6;
-  transition: width 0.06s linear;
-  border-radius: 0 2px 2px 0;
-}
-
-/* ---- thumbnail strip (OUTSIDE viewport, below image) ---- */
 .ps-controls {
   display: flex;
   align-items: center;
@@ -120,7 +99,6 @@
   background: rgba(8,12,28,0.6);
   border-top: 1px solid rgba(255,255,255,0.06);
 }
-/* prev/next inside control bar */
 .ps-controls .ps-arrow {
   position: static;
   transform: none;
@@ -131,7 +109,7 @@
   flex-shrink: 0;
 }
 .ps-controls .ps-arrow:hover { background: rgba(99,102,241,0.8); }
-/* thumbs scroll row */
+
 .ps-thumbs {
   display: flex;
   gap: 6px;
@@ -155,7 +133,6 @@
 .ps-thumb:hover { opacity: 0.8; transform: translateY(-2px); }
 .ps-thumb.active { opacity: 1; border-color: #6366f1; transform: translateY(-2px); }
 
-/* ---- dot row (inside viewport, bottom center) ---- */
 .ps-dots {
   display: flex;
   gap: 5px;
@@ -179,12 +156,12 @@
 }
 
 /* ============================================================
-   CARD shell  (keeps your existing glass-card + project-card)
+   CARD shell
    ============================================================ */
 .glass-card.project-card {
   display: flex;
   flex-direction: column;
-  overflow: hidden;        /* clip the slider top corners */
+  overflow: hidden;
   padding: 0 !important;
   background: rgba(255,255,255,0.03);
   backdrop-filter: blur(10px);
@@ -200,7 +177,6 @@
   border-color: rgba(168,85,247,0.3);
 }
 
-/* inner padding area */
 .project-card-inner {
   padding: 16px 20px 20px;
   display: flex;
@@ -211,7 +187,6 @@
   margin: 0 0 8px;
 }
 
-/* description */
 .project-full-desc {
   font-size: 0.87rem;
   color: rgba(200,205,255,0.68);
@@ -219,7 +194,6 @@
   margin: 0 0 14px;
 }
 
-/* feature pills */
 .project-feature-list {
   display: flex;
   flex-wrap: wrap;
@@ -242,7 +216,6 @@
   border-color: rgba(99,102,241,0.4);
 }
 
-/* bottom strip */
 .project-bottom {
   margin-top: auto;
   padding-top: 14px;
@@ -269,7 +242,6 @@
   transform: translateY(-2px);
 }
 
-/* no-image placeholder (unchanged) */
 .project-no-img {
   display: flex;
   align-items: center;
@@ -288,7 +260,6 @@
 .project-no-img i { transition: transform 0.4s; }
 .project-card:hover .project-no-img i { transform: scale(1.15) translateY(-5px); }
 
-/* grid */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -310,7 +281,6 @@
         <button class="lang-btn active" data-lang="pl">PL</button>
         <button class="lang-btn" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="ua">UA</button>
-        <button class="lang-btn" data-lang="ru">RU</button>
       </div>
       <ul class="nav-links">
         <li><a href="#about"    data-i18n="nav-about">O mnie</a></li>
@@ -386,7 +356,7 @@
             <span class="edu-status active" data-i18n="edu-current">Obecnie</span>
           </div>
           <div class="edu-item">
-            <h4 class="edu-place" data-i18n="edu-school">Kijów Engineering High School</h4>
+            <h4 class="edu-place" data-i18n="edu-school">Kijowskie Liceum Inżynierskie</h4>
             <span class="edu-year">2012 — 2023</span>
           </div>
         </div>
@@ -421,7 +391,7 @@
           <span class="tag">Jira</span><span class="tag">Azure</span><span class="tag">Windows</span>
           <span class="tag">MS Office</span>
           <span class="tag" data-i18n="soft-1">Kreatywność</span>
-          <span class="tag" data-i18n="soft-2">Praca w zespole</span>
+          <span class="tag" data-i18n="soft-2">Praca zespołowa</span>
           <span class="tag" data-i18n="soft-3">Odpowiedzialność</span>
         </div>
       </div>
@@ -457,9 +427,6 @@
   </div>
 </section>
 
-<!-- ================================================================
-     PROJECTS SECTION  –  sliders instead of static .project-gallery
-     ================================================================ -->
 <section id="projects" class="section-padding">
   <div class="container">
     <h2 class="section-title fade-in" data-i18n="projects-title">Moje Projekty</h2>
@@ -473,7 +440,6 @@
             <img class="ps-slide active" src="img/shop1.png" alt="Shop Electro – produkty">
             <img class="ps-slide"        src="img/shop4.png" alt="Shop Electro – admin">
             <span class="ps-badge badge-shop">E-commerce</span>
-            <div class="ps-progress" id="ps-shop-prog"></div>
           </div>
           <div class="ps-controls">
             <button class="ps-arrow ps-prev" data-id="shop" aria-label="Poprzedni">&#8592;</button>
@@ -493,7 +459,7 @@
             Pełnoprawna aplikacja e-commerce z systemem logowania, panelem admina, koszykiem i czatem live.
           </p>
           <div class="project-feature-list">
-            <span>Logowanie</span><span>Panel Admina</span><span>Koszyk</span><span>Czat live</span><span>CRUD</span>
+            <span data-i18n="feat-shop-1">Logowanie</span><span data-i18n="feat-shop-2">Panel Admina</span><span data-i18n="feat-shop-3">Koszyk</span><span data-i18n="feat-shop-4">Czat live</span><span>CRUD</span>
           </div>
           <div class="project-bottom">
             <div class="project-techs">HTML • CSS • JS • PHP • SQL</div>
@@ -515,7 +481,6 @@
             <img class="ps-slide"        src="img/cinema3.png" alt="CineFlex – miejsca">
             <img class="ps-slide"        src="img/cinema4.png" alt="CineFlex – cennik">
             <span class="ps-badge badge-cinema">Cinema</span>
-            <div class="ps-progress" id="ps-cinema-prog"></div>
           </div>
           <div class="ps-controls">
             <button class="ps-arrow ps-prev" data-id="cinema" aria-label="Poprzedni">&#8592;</button>
@@ -537,7 +502,7 @@
             Interaktywna strona kina CineFlex — repertuar, mapa siedzeń, menu bufetu i dark mode UI.
           </p>
           <div class="project-feature-list">
-            <span>Mapa siedzeń</span><span>Repertuar</span><span>Menu bufetu</span><span>Dark mode</span>
+            <span data-i18n="feat-cinema-1">Mapa siedzeń</span><span data-i18n="feat-cinema-2">Repertuar</span><span data-i18n="feat-cinema-3">Menu bufetu</span><span>Dark mode</span>
           </div>
           <div class="project-bottom">
             <div class="project-techs">React • JavaScript • CSS</div>
@@ -557,7 +522,6 @@
             <img class="ps-slide active" src="img/weather1.png" alt="Weather App – Kyiv °C">
             <img class="ps-slide"        src="img/weather2.png" alt="Weather App – London °F">
             <span class="ps-badge badge-weather">Weather API</span>
-            <div class="ps-progress" id="ps-weather-prog"></div>
           </div>
           <div class="ps-controls">
             <button class="ps-arrow ps-prev" data-id="weather" aria-label="Poprzedni">&#8592;</button>
@@ -577,7 +541,7 @@
             Pogoda w czasie rzeczywistym z OpenWeatherMap API — AQI, prognoza 5-dniowa, °C/°F.
           </p>
           <div class="project-feature-list">
-            <span>REST API</span><span>Prognoza 5 dni</span><span>AQI</span><span>°C / °F</span><span>Dark mode</span>
+            <span>REST API</span><span data-i18n="feat-weather-1">Prognoza 5 dni</span><span>AQI</span><span>°C / °F</span><span>Dark mode</span>
           </div>
           <div class="project-bottom">
             <div class="project-techs">JS • REST API • JSON</div>
@@ -599,10 +563,10 @@
         <div class="project-card-inner">
           <h3>Mini Task Manager</h3>
           <p class="project-full-desc" data-i18n="proj-2-desc">
-            Prosta aplikacja do zarządzania zadaniami. Dane w localStorage, responsywny interfejs, bez przeładowania.
+            Prosta aplikacja do zarządzania zadaniami. Dane w localStorage, responsywny interfejs, bez przeładowania strony.
           </p>
           <div class="project-feature-list">
-            <span>Dodawanie zadań</span><span>Done/Undone</span><span>localStorage</span><span>Responsywny UI</span>
+            <span data-i18n="feat-task-1">Dodawanie zadań</span><span>Done/Undone</span><span>localStorage</span><span data-i18n="feat-task-2">Responsywny UI</span>
           </div>
           <div class="project-bottom">
             <div class="project-techs">JavaScript • HTML • CSS</div>
@@ -645,7 +609,7 @@
 <script src="script.js"></script>
 
 <!-- ============================================================
-     SLIDER SCRIPT  (self-contained, no dependencies)
+     SLIDER SCRIPT — manual navigation only, NO auto-play
      ============================================================ -->
 <script>
 (function () {
@@ -657,14 +621,12 @@
     { id: 'weather', total: 2 },
   ];
 
-  const AUTO_MS = 4000;
   const state = {};
 
   SLIDERS.forEach(({ id, total }) => {
-    state[id] = { idx: 0, total, timer: null, progTimer: null, progStart: 0 };
+    state[id] = { idx: 0, total };
     buildDots(id, total);
     render(id);
-    startAuto(id);
   });
 
   /* ---- build dot buttons ---- */
@@ -681,34 +643,29 @@
     }
   }
 
-  /* ---- render: show/hide with animation ---- */
+  /* ---- render ---- */
   function render(id) {
     const s = state[id];
 
-    /* slides — swap active class (CSS handles display+animation) */
     const vp = document.getElementById('ps-' + id + '-vp');
     if (vp) {
       Array.from(vp.querySelectorAll('.ps-slide')).forEach((sl, i) => {
         const wasActive = sl.classList.contains('active');
         sl.classList.toggle('active', i === s.idx);
-        /* restart animation on newly shown slide */
         if (!wasActive && i === s.idx) {
           sl.style.animation = 'none';
-          sl.offsetHeight; /* reflow */
+          sl.offsetHeight;
           sl.style.animation = '';
         }
       });
     }
 
-    /* counter */
     const cnt = document.getElementById('ps-' + id + '-cnt');
     if (cnt) cnt.textContent = (s.idx + 1) + ' / ' + s.total;
 
-    /* dots */
     const dots = document.getElementById('ps-' + id + '-dots');
     if (dots) Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === s.idx));
 
-    /* thumbs */
     const thumbs = document.getElementById('ps-' + id + '-thumbs');
     if (thumbs) Array.from(thumbs.querySelectorAll('.ps-thumb')).forEach((t, i) => t.classList.toggle('active', i === s.idx));
   }
@@ -718,43 +675,11 @@
     const s = state[id];
     s.idx = (s.idx + dir + s.total) % s.total;
     render(id);
-    resetAuto(id);
   }
 
   function goTo(id, idx) {
     state[id].idx = idx;
     render(id);
-    resetAuto(id);
-  }
-
-  /* ---- auto-play ---- */
-  function startAuto(id) {
-    const s = state[id];
-    clearInterval(s.timer);
-    s.timer = setInterval(() => move(id, 1), AUTO_MS);
-    startProgress(id);
-  }
-
-  function resetAuto(id) {
-    clearInterval(state[id].timer);
-    startAuto(id);
-  }
-
-  /* ---- progress bar ---- */
-  function startProgress(id) {
-    const s   = state[id];
-    const bar = document.getElementById('ps-' + id + '-prog');
-    if (!bar) return;
-    clearInterval(s.progTimer);
-    bar.style.transition = 'none';
-    bar.style.width      = '0%';
-    s.progStart = Date.now();
-    s.progTimer = setInterval(() => {
-      const pct = Math.min(((Date.now() - s.progStart) / AUTO_MS) * 100, 100);
-      bar.style.transition = 'width 0.06s linear';
-      bar.style.width      = pct + '%';
-      if (pct >= 100) clearInterval(s.progTimer);
-    }, 60);
   }
 
   /* ---- arrow clicks ---- */
@@ -783,17 +708,6 @@
       const dx = e.changedTouches[0].clientX - sx;
       if (Math.abs(dx) > 38) move(id, dx < 0 ? 1 : -1);
     }, { passive: true });
-  });
-
-  /* ---- pause on hover ---- */
-  SLIDERS.forEach(({ id }) => {
-    const vp = document.getElementById('ps-' + id + '-vp');
-    if (!vp) return;
-    vp.addEventListener('mouseenter', () => {
-      clearInterval(state[id].timer);
-      clearInterval(state[id].progTimer);
-    });
-    vp.addEventListener('mouseleave', () => startAuto(id));
   });
 
 })();
