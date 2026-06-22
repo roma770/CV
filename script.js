@@ -44,6 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "feat-weather-1": "Prognoza 5 dni",
             "feat-task-1": "Dodawanie zadań",
             "feat-task-2": "Responsywny UI",
+            "proj-5-desc": "Wielostronicowy fan-site gry Star Wars Jedi: Fallen Order — 19 podstron, wspólny system designu, responsywne menu i galeria z lightboxem.",
+            "feat-jedi-1": "19 podstron",
+            "feat-jedi-2": "Galeria + Lightbox",
+            "feat-jedi-3": "Animacje",
             "footer-title": "Skontaktuj się ze mną",
             "footer-subtitle": "Jestem otwarty na nowe możliwości współpracy.",
             "location": "Warszawa, Polska",
@@ -93,6 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "feat-weather-1": "5-day Forecast",
             "feat-task-1": "Add Tasks",
             "feat-task-2": "Responsive UI",
+            "proj-5-desc": "Multi-page fan site for Star Wars Jedi: Fallen Order — 19 subpages, a shared design system, responsive menu and a gallery with lightbox.",
+            "feat-jedi-1": "19 subpages",
+            "feat-jedi-2": "Gallery + Lightbox",
+            "feat-jedi-3": "Animations",
             "footer-title": "Contact Me",
             "footer-subtitle": "I am open to new collaboration opportunities.",
             "location": "Warsaw, Poland",
@@ -142,6 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "feat-weather-1": "Прогноз на 5 днів",
             "feat-task-1": "Додавання завдань",
             "feat-task-2": "Адаптивний UI",
+            "proj-5-desc": "Багатосторінковий фан-сайт гри Star Wars Jedi: Fallen Order — 19 підсторінок, спільна система дизайну, адаптивне меню та галерея з лайтбоксом.",
+            "feat-jedi-1": "19 підсторінок",
+            "feat-jedi-2": "Галерея + Lightbox",
+            "feat-jedi-3": "Анімації",
             "footer-title": "Зв'яжіться зі мною",
             "footer-subtitle": "Відкритий до нових можливостей співпраці.",
             "location": "Варшава, Польща",
@@ -152,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const langButtons = document.querySelectorAll(".lang-btn");
 
     function setLanguage(lang) {
-        // fallback to 'pl' if somehow 'ru' was saved
+       
         if (!translations[lang]) lang = 'pl';
 
         document.documentElement.lang = lang;

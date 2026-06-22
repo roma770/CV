@@ -1,11 +1,5 @@
-/* =============================================
-   ROMAN CHUMAK — PORTFOLIO  |  style.css
-   ============================================= */
-
-/* ---------- Google Fonts ---------- */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap');
 
-/* ---------- Variables ---------- */
 :root {
   --bg:           #050507;
   --bg-light:     #0c0c12;
@@ -22,7 +16,6 @@
   --font-main:    "Plus Jakarta Sans", sans-serif;
 }
 
-/* ---------- Reset ---------- */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -39,7 +32,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Ambient background glow */
 body::before {
   content: "";
   position: fixed;
@@ -51,7 +43,6 @@ body::before {
   pointer-events: none;
 }
 
-/* ---------- Layout ---------- */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -61,7 +52,6 @@ body::before {
 
 .section-padding { padding: 130px 0; }
 
-/* ---------- Typography helpers ---------- */
 .accent-text {
   color: var(--accent);
   text-shadow: 0 0 35px rgba(0,229,255,0.25);
@@ -72,7 +62,6 @@ body::before {
   font-weight: 700;
 }
 
-/* ---------- Navbar ---------- */
 #navbar {
   position: fixed;
   top: 0; left: 0;
@@ -106,7 +95,6 @@ body::before {
   gap: 30px;
 }
 
-/* Nav links */
 .nav-links {
   display: flex;
   align-items: center;
@@ -136,7 +124,6 @@ body::before {
 .nav-links a:hover { color: #fff; }
 .nav-links a:hover::after { width: 100%; }
 
-/* Language switcher */
 .language-switcher {
   display: inline-flex;
   align-items: center;
@@ -174,7 +161,6 @@ body::before {
   box-shadow: 0 0 15px rgba(0,229,255,0.5);
 }
 
-/* Nav button */
 .nav-btn {
   text-decoration: none;
   font-weight: 700;
@@ -196,7 +182,6 @@ body::before {
   box-shadow: 0 10px 30px rgba(0,229,255,0.25);
 }
 
-/* ---------- Buttons ---------- */
 .btn {
   text-decoration: none;
   font-weight: 700;
@@ -230,7 +215,6 @@ body::before {
   transform: translateY(-5px);
 }
 
-/* ---------- Hero ---------- */
 #hero {
   min-height: 100vh;
   display: flex;
@@ -281,7 +265,6 @@ body::before {
   flex-wrap: wrap;
 }
 
-/* Hero photo */
 .hero-photo-wrap {
   position: relative;
   display: flex;
@@ -348,7 +331,6 @@ body::before {
   to { transform: rotate(-360deg); }
 }
 
-/* ---------- Section title ---------- */
 .section-title {
   font-size: 3.5rem;
   color: #fff;
@@ -368,7 +350,6 @@ body::before {
   background: var(--accent);
 }
 
-/* ---------- Glass card ---------- */
 .glass-card {
   background: #0c0c0e;
   border: 1px solid rgba(255,255,255,0.05);
@@ -401,7 +382,6 @@ body::before {
   margin-bottom: 25px;
 }
 
-/* ---------- About ---------- */
 .about-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -409,7 +389,6 @@ body::before {
   align-items: stretch;
 }
 
-/* About text card */
 .about-header {
   display: flex;
   align-items: center;
@@ -440,7 +419,6 @@ body::before {
   margin: 20px 0;
 }
 
-/* Skill pills (about section) */
 .skills-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -468,7 +446,6 @@ body::before {
   color: #fff;
 }
 
-/* ---------- Education card ---------- */
 .edu-card {
   display: flex;
   flex-direction: column;
@@ -505,7 +482,6 @@ body::before {
   font-weight: 600;
 }
 
-/* Timeline line */
 .edu-content {
   position: relative;
   padding-left: 25px;
@@ -565,7 +541,6 @@ body::before {
   box-shadow: 0 0 10px rgba(0,229,255,0.15);
 }
 
-/* ---------- Skills section ---------- */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -597,7 +572,7 @@ body::before {
   margin-bottom: 0;
 }
 
-/* Tags */
+
 .tags-container {
   display: flex;
   flex-wrap: wrap;
@@ -624,7 +599,7 @@ body::before {
   border-color: var(--accent);
 }
 
-/* Language list */
+
 .lang-list {
   list-style: none;
 }
@@ -663,7 +638,6 @@ body::before {
   text-align: right;
 }
 
-/* ---------- Projects ---------- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -742,7 +716,6 @@ body::before {
   border-color: var(--accent);
 }
 
-/* ---------- Footer / Contact ---------- */
 .footer {
   padding: 100px 0;
   border-top: 1px solid var(--border);
@@ -794,7 +767,6 @@ body::before {
   font-size: 0.88rem;
 }
 
-/* ---------- Fade-in animation ---------- */
 .fade-in {
   opacity: 0;
   transform: translateY(35px);
@@ -809,7 +781,6 @@ body::before {
 .fade-in.delay-1.visible { transition-delay: 0.15s; }
 .fade-in.delay-2.visible { transition-delay: 0.3s; }
 
-/* ---------- MOBILE ---------- */
 
 @media (max-width: 992px) {
   .about-grid {
@@ -835,7 +806,7 @@ body::before {
 }
 
 @media (max-width: 768px) {
-  /* Navbar */
+
   #navbar { padding: 14px 0; }
 
   .logo { font-size: 1.6rem; }
@@ -860,7 +831,6 @@ body::before {
     gap: 3px;
   }
 
-  /* Hero */
   #hero {
     padding-top: 100px;
     min-height: auto;
@@ -887,20 +857,17 @@ body::before {
 
   .hero-photo-ring { width: min(55%, 220px); }
 
-  /* Sections */
   .section-padding { padding: 80px 0; }
   .section-title {
     font-size: 2.2rem;
     margin-bottom: 40px;
   }
 
-  /* Cards */
   .glass-card {
     padding: 28px 22px;
     border-radius: 26px;
   }
 
-  /* Grids → 1 col */
   .about-grid,
   .skills-grid,
   .projects-grid {
@@ -908,14 +875,12 @@ body::before {
     gap: 20px;
   }
 
-  /* Project bottom */
   .project-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
   }
 
-  /* Contact */
   .contact-methods {
     flex-direction: column;
     align-items: stretch;
@@ -926,7 +891,6 @@ body::before {
 
   .footer-title { font-size: 1.9rem; }
 
-  /* Lang list */
   .lang-list li {
     grid-template-columns: 80px 1fr 36px;
     gap: 10px;
