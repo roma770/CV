@@ -78,6 +78,7 @@
 .ps-badge.badge-cinema  { background: #dc2626; }
 .ps-badge.badge-weather { background: #2563eb; }
 .ps-badge.badge-jedi    { background: #c9962b; }
+.ps-badge.badge-finance { background: #378ADD; }
 
 .ps-counter {
   font-size: 11px;
@@ -547,6 +548,46 @@
         </div>
       </div>
 
+
+      <!-- FINANCE TRACKER AI -->
+      <div class="glass-card project-card fade-in">
+
+        <div class="project-slider" id="ps-finance">
+          <div class="ps-viewport" id="ps-finance-vp">
+            <img class="ps-slide active" src="img/finance1.png" alt="Finance Tracker – dashboard">
+            <img class="ps-slide"        src="img/finance2.png" alt="Finance Tracker – AI advisor">
+            <span class="ps-badge badge-finance">AI + Finance</span>
+          </div>
+          <div class="ps-controls">
+            <button class="ps-arrow ps-prev" data-id="finance" aria-label="Poprzedni">&#8592;</button>
+            <div class="ps-thumbs" id="ps-finance-thumbs">
+              <img class="ps-thumb active" src="img/finance1.png" data-id="finance" data-idx="0" alt="">
+              <img class="ps-thumb"        src="img/finance2.png" data-id="finance" data-idx="1" alt="">
+            </div>
+            <button class="ps-arrow ps-next" data-id="finance" aria-label="Następny">&#8594;</button>
+            <div class="ps-dots" id="ps-finance-dots"></div>
+            <div class="ps-counter" id="ps-finance-cnt">1 / 2</div>
+          </div>
+        </div>
+
+        <div class="project-card-inner">
+          <h3>Finance Tracker AI</h3>
+          <p class="project-full-desc" data-i18n="proj-finance-desc">
+            Inteligentny tracker finansów osobistych z asystentem AI — budżety, cele oszczędnościowe, wykresy i analiza wydatków.
+          </p>
+          <div class="project-feature-list">
+            <span data-i18n="feat-finance-1">AI Advisor</span><span data-i18n="feat-finance-2">Budżety</span><span data-i18n="feat-finance-3">Cele</span><span>Charts</span><span>i18n</span>
+          </div>
+          <div class="project-bottom">
+            <div class="project-techs">React • Vite • Chart.js • Claude API</div>
+            <div class="project-links">
+              <a href="https://roma770.github.io/finance_tracker/" target="_blank"><i class="fa-solid fa-link"></i></a>
+              <a href="https://github.com/roma770/finance_tracker"  target="_blank"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- STAR WARS JEDI: FALLEN ORDER-->
       <div class="glass-card project-card fade-in">
 
@@ -649,6 +690,7 @@
     { id: 'shop',    total: 2 },
     { id: 'cinema',  total: 4 },
     { id: 'weather', total: 2 },
+    { id: 'finance', total: 2 },
     { id: 'jedi',    total: 2 },
   ];
 
