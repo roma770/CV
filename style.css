@@ -606,9 +606,9 @@ body::before {
 
 .lang-list li {
   display: grid;
-  grid-template-columns: 100px 1fr 40px;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   margin-bottom: 18px;
 }
 
@@ -616,6 +616,9 @@ body::before {
   color: #fff;
   font-weight: 600;
   font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .lang-progress-bg {
@@ -892,7 +895,7 @@ body::before {
   .footer-title { font-size: 1.9rem; }
 
   .lang-list li {
-    grid-template-columns: 80px 1fr 36px;
+    grid-template-columns: auto 1fr auto;
     gap: 10px;
   }
 }
@@ -919,7 +922,7 @@ body::before {
   }
 
   .lang-list li {
-    grid-template-columns: 70px 1fr 32px;
+    grid-template-columns: auto 1fr auto;
     gap: 8px;
   }
 
