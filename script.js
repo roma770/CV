@@ -207,6 +207,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         localStorage.setItem("portfolio-language", lang);
+
+        // Re-check visibility after language switch (text length may shift layout)
+        setTimeout(() => {
+            document.querySelectorAll(".fade-in:not(.visible)").forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add("visible");
+                }
+            });
+        }, 50);
     }
 
     langButtons.forEach(button => {
@@ -220,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add("visible");
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
 
     document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
